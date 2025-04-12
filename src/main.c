@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:59 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/06 00:57:49 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/12 03:54:50 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int main (void)
 	fractol.addr = mlx_get_data_addr(fractol.mlx, &fractol.bpp, &fractol.line_len, &fractol.endian);
 
 	//missing something here
+	ft_render(&fractol);
+	mlx_put_image_to_window(fractol.mlx, fractol.win, fractol.img, 0, 0);
+	mlx_key_hook(fractol.win, (int (*)())des_wind, &fractol);
 
 	mlx_loop(fractol.mlx);
 	return (0);
