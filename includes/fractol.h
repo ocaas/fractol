@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/13 01:37:01 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/13 01:52:21 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ typedef struct s_complex
 
 void	ft_render(t_data *img);
 void	loop_pixels(t_data *img, int x, int y, int color);
-int		des_wind(int keycode, void *param)
 int		mandelbrot(t_complex c);
-//funct
-
+int		des_wind(int keycode, void *param);
 #endif
