@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:59 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/12 03:54:50 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/13 01:28:22 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main (void)
 	ft_render(&fractol);
 	mlx_put_image_to_window(fractol.mlx, fractol.win, fractol.img, 0, 0);
 	mlx_key_hook(fractol.win, (int (*)())des_wind, &fractol);
-
 	mlx_loop(fractol.mlx);
 	return (0);
 }

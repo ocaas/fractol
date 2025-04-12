@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/13 01:02:46 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/13 01:37:01 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct t_data
 
 typedef struct s_complex
 {
-	int		re; //real
-	int		im; //imaginary 
+	double		re; //real
+	double		im; //imaginary 
 }t_complex;
 
 void	ft_render(t_data *img);
