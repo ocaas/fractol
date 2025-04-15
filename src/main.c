@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:59 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/15 00:22:56 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/15 03:11:12 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int main (void)
 	t_data	fractol;
 
 	fractol.mlx = mlx_init();
-	if (!fractol.mlx)
-		return (1);
+	if (error_check(&fractol) == MLX_ERROR)
+		return (MLX_ERROR);
 	
 	fractol.win = mlx_new_window(fractol.mlx, 800, 800, "window");
 	fractol.img = mlx_new_image(fractol.mlx, 600, 500);

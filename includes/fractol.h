@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/15 01:03:59 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/15 03:07:44 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define ESC_KEY 65307
+# define MLX_ERROR 1
 
 typedef struct t_data
 {
@@ -43,4 +44,5 @@ void	ft_render(t_data *img);
 void	loop_pixels(t_data *img, int x, int y, int color);
 int		mandelbrot(t_complex c);
 int		des_wind(int keycode, t_data *data);
+int error_check(t_data *data);
 #endif

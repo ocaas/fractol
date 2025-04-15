@@ -6,11 +6,12 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/15 00:23:47 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/15 04:00:12 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
 
 void	loop_pixels(t_data *img, int x, int y, int color)
 {
