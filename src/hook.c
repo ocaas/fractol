@@ -6,13 +6,13 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 07:47:44 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/15 01:12:00 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/15 05:59:53 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int des_wind(int keycode, t_data *data)
+int	des_wind(int keycode, t_data *data)
 {
 	if (keycode == ESC_KEY)
 	{
@@ -22,9 +22,11 @@ int des_wind(int keycode, t_data *data)
 		free(data->mlx);
 		exit(0);
 	}
-	return(0);
+	return (0);
 }
 	/*handle_movement(keycode, data);
+
+	Cuando muevas mandelbrot usas x_offset e y_offset 
 	handle_zoom(keycode, data);
 	apply_color_change(keycode, data);
 	handle_lorenz_keys(keycode, data);

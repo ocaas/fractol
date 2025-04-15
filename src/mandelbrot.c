@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 02:02:33 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/14 23:55:52 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/15 05:35:59 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	mandelbrot(t_complex c)
 {
-	t_complex z;
-	int		iter;
-	double	tmp;
+	t_complex	z;
+	int			iter;
+	double		tmp;
 
 	z.re = 0;
 	z.im = 0;
