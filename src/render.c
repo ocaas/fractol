@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/14 23:55:59 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/15 00:23:47 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	loop_pixels(t_data *img, int x, int y, int color)
 {
-	char	*dest;
+	if (!img || !img->addr || x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
+		return ;
 
+	char	*dest;
 	dest = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(unsigned int *)dest = color;
 }
