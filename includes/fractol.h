@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/15 06:02:34 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/24 05:27:13 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,25 @@ typedef struct t_data
 
 	int		x_offset;
 	int		y_offset;
-	int		c_imag; sumar +1
-	int		c_real; sumar +1
+	int		c_imag; //sumar +1
+	int		c_real; //sumar +1
 }	t_data;
+
+typedef struct j_data
+{
+	void	*mlx;
+	void	*img;
+	void	*win;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+
+	int		x_offset;
+	int		y_offset;
+	int		c_imag; //sumar +1
+	int		c_real; //sumar +1
+}	j_data;
 
 typedef struct s_complex
 {
@@ -50,4 +66,5 @@ void	loop_pixels(t_data *img, int x, int y, int color);
 int		mandelbrot(t_complex c);
 int		des_wind(int keycode, t_data *data);
 int		error_check(t_data *data);
+
 #endif
