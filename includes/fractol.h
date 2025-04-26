@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/26 05:16:49 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/26 21:18:04 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	loop_pixels(t_data *img, int x, int y, int color);
 int		mandelbrot(t_complex c);
 int		key_handle(int keycode, t_data *data);
 int		error_check(t_data *data);
-void zoom_handle(int keycode, t_data *data);
+void 	zoom_handle(int keycode, t_data *data);
 
 #endif
