@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/26 21:18:04 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/27 01:12:55 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 # include <unistd.h>
 # include <math.h>
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1000
+# define HEIGHT 1000
 # define ESC_KEY 65307
 # define MLX_ERROR 1
 # define ZOOM_IN 61
 # define ZOOM_OUT 45
-# define JULIS 1
+# define MANDELBROT 0 
+# define JULIA 1
 
 
 typedef struct t_data
@@ -37,6 +38,8 @@ typedef struct t_data
 	int		line_len;
 	int		endian;
 
+	int 	fractal_type;
+
 	int		offset_x;
 	int		offset_y;
 	int		zoom;
@@ -45,7 +48,7 @@ typedef struct t_data
 	//int		c_real; //sumar +1
 }	t_data;
 
-typedef struct s_complex
+typedef struct t_complex
 {
 	double		re; //real
 	double		im; //imaginary 

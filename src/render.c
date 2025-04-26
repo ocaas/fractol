@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/26 05:05:12 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/27 00:50:31 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void	loop_pixels(t_data *img, int x, int y, int color)
 	*(unsigned int *)dest = color;
 }
 
+void	ft_render(t_data *data)
+{
+	if (data->img)
+		mlx_destroy_image(data->mlx, data->img);
+	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img_data = mlx_get_data_addr(data->img, &data->bpp,
+			&data->line_len, &data->endian);
+	if (data->fractal_type == MANDELBROT)
+		mandelbrot(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+}
+/*
 void	ft_render(t_data *img)
 {
 	int			i;
@@ -35,8 +47,8 @@ void	ft_render(t_data *img)
 		x = 0;
 		while (x < WIDTH)
 		{
-			c.re = ((double)x / WIDTH  * 4.0 - 2.0) / img->zoom + img->offset_x;
-			c.im = ((double)y / HEIGHT * 4.0 - 2.0) / img->zoom + img->offset_y;
+            c.re = ((double)x / WIDTH) * (4.0 / img->zoom) - (2.0 / img->zoom) + img->offset_x;
+            c.im = ((double)y / HEIGHT) * (4.0 / img->zoom) - (2.0 / img->zoom) + img->offset_y;
 
 			i = mandelbrot(c);
 			if (i == 100)
@@ -48,7 +60,7 @@ void	ft_render(t_data *img)
 		y++;
 	}
 }
-
+*/
 /*
 ex. render has to covert each (x, y) pixel into complex numbers.
 Apply the math loop (z = z^2 + c)

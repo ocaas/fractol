@@ -6,39 +6,14 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 07:47:44 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/26 21:14:51 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/26 21:51:11 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int key_handle(int keycode, t_data *f)
-{
-    if (keycode == ESC_KEY)
-    {
-        mlx_destroy_image(f->mlx, f->img);
-        mlx_destroy_window(f->mlx, f->win);
-        mlx_destroy_display(f->mlx);
-        free(f->mlx);
-        exit(0);
-    }
-    else if (keycode == ZOOM_IN)
-        f->zoom *= 1.1;
-    else if (keycode == ZOOM_OUT)
-    {
-        f->zoom /= 1.1;
-        if (f->max_iter > 30)
-            f->max_iter -= 10;
-    }
-    else
-        return (0);
-    ft_render(f);
-    mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
-    return (0);
-}
 
-
-/* int	key_handle(int keycode, t_data *data)
+int	key_handle(int keycode, t_data *data)
 {
 	if (keycode == ESC_KEY)
 	{
@@ -67,7 +42,7 @@ void zoom_handle(int keycode, t_data *data)
 	}
 	ft_render(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-} */
+}
 /*
 	if(keycode == ZOOM_IN)
 		data->zoom *= 1.1;
