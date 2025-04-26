@@ -6,13 +6,13 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 07:47:44 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/26 03:23:18 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/26 05:19:22 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	des_wind(int keycode, t_data *data)
+int	key_handle(int keycode, t_data *data)
 {
 	if (keycode == ESC_KEY)
 	{
@@ -22,6 +22,26 @@ int	des_wind(int keycode, t_data *data)
 		free(data->mlx);
 		exit(0);	
 	}
+	zoom_handle(keycode, data);
+	return (0);
+}
+
+void zoom_handle(int keycode, t_data *data)
+{
+	if (keycode == ZOOM_IN)
+	{
+		data->zoom *= 1.1;
+		data->max_iter += 10;
+	}
+	else if (keycode == ZOOM_OUT)
+	{
+		data->zoom /= 1.1;
+		if (data->max_iter > 30)
+			data->max_iter -= 10;
+	}
+	ft_render(data);
+}
+/*
 	if(keycode == ZOOM_IN)
 		data->zoom *= 1.1;
 	else if(keycode == ZOOM_OUT)
@@ -31,9 +51,7 @@ int	des_wind(int keycode, t_data *data)
 	ft_render(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return(0);
-}
-
-
+	*/
 	/*handle_movement(keycode, data);
 
 	Cuando muevas mandelbrot usas x_offset e y_offset 

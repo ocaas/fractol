@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/26 02:56:22 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/26 05:05:12 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ void	ft_render(t_data *img)
 		x = 0;
 		while (x < WIDTH)
 		{
-			c.re = (double)x / WIDTH * 4.0 - 2.0;
-			c.im = (double)y / HEIGHT * 4.0 - 2.0;
+			c.re = ((double)x / WIDTH  * 4.0 - 2.0) / img->zoom + img->offset_x;
+			c.im = ((double)y / HEIGHT * 4.0 - 2.0) / img->zoom + img->offset_y;
+
 			i = mandelbrot(c);
 			if (i == 100)
 				loop_pixels(img, x, y, 0x000000);
