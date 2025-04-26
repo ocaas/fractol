@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 07:47:44 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/15 05:59:53 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/25 03:55:33 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ int	des_wind(int keycode, t_data *data)
 		exit(0);
 	}
 	return (0);
+}
+
+int zoom(int keycode, t_data *data)
+{
+	if(keycode == ZOOM_IN)
+		data->zoom *= 1.1;
+	if(keycode == ZOOM_OUT)
+		data->zoom /= 1.1;
+	else 
+		return(0);
+	ft_render(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	return(0);
 }
 	/*handle_movement(keycode, data);
 

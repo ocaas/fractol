@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/15 05:34:41 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/26 02:56:22 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	loop_pixels(t_data *img, int x, int y, int color)
 
 void	ft_render(t_data *img)
 {
+	int			i;
 	int			x;
 	int			y;
 	t_complex	c;
-	int			i;
 
 	y = 0;
 	while (y < HEIGHT)

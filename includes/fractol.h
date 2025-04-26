@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/24 05:27:13 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/26 03:04:59 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define HEIGHT 800
 # define ESC_KEY 65307
 # define MLX_ERROR 1
+# define ZOOM_IN 65451
+# define ZOOM_OUT 65453
+
 
 typedef struct t_data
 {
@@ -33,27 +36,12 @@ typedef struct t_data
 	int		line_len;
 	int		endian;
 
-	int		x_offset;
-	int		y_offset;
-	int		c_imag; //sumar +1
-	int		c_real; //sumar +1
+	int		offset_x;
+	int		offset_y;
+	int		zoom;
+	//int		c_imag; //sumar +1
+	//int		c_real; //sumar +1
 }	t_data;
-
-typedef struct j_data
-{
-	void	*mlx;
-	void	*img;
-	void	*win;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-
-	int		x_offset;
-	int		y_offset;
-	int		c_imag; //sumar +1
-	int		c_real; //sumar +1
-}	j_data;
 
 typedef struct s_complex
 {

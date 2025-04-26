@@ -6,13 +6,14 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 05:28:00 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/24 05:32:02 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/25 01:51:08 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
+/*
 int	julia(s_complex c)
 {
 	int 
 }
+*/
