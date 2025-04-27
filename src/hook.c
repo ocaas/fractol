@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 07:47:44 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/27 02:58:43 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/27 05:39:14 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ int	key_handle(int keycode, t_data *data)
 		free(data->mlx);
 		exit(0);	
 	}
-	if(keycode == ZOOM_IN)
+	else if(keycode == ZOOM_IN)
 		data->zoom *= 1.2;
-	if (keycode == ZOOM_OUT)
+	else if (keycode == ZOOM_OUT)
 		data->zoom /= 1.2;
+	else
+		return(0);
 	ft_render(data);
-	//zoom_handle(keycode, data);
 	return (0);
 }
 

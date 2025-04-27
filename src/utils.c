@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:04 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/15 05:39:13 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/27 05:37:48 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,14 @@ int	error_check(t_data *data)
 	if (img_error(data) == MLX_ERROR)
 		return (1);
 	return (0);
+}
+
+double map_x(int x, t_data *data)
+{
+	return((x - WIDTH / 2.0) * (4.0 / WIDTH) / data->zoom + data->offset_x);
+}
+
+double map_y(int x,t_data *data)
+{
+	return((y - HEIGHT / 2.0) * (4.0 / HEIGHT) / data->zoom + data->offset_y);
 }

@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/27 03:35:03 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/27 05:59:33 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,48 @@ void	loop_pixels(t_data *img, int x, int y, int color)
 	*(unsigned int *)dest = color;
 }
 
+void ft_render(t_data *f)
+{
+    int	x;
+	int	y;
+	int iter;
+    t_complex c;
+
+    y = 0;
+    if (f->img)
+        mlx_destroy_image(f->mlx, f->img);
+    f->img = mlx_new_image(f->mlx, WIDTH, HEIGHT);
+    f->addr = mlx_get_data_addr(f->img, &f->bpp, &f->line_len, &f->endian);
+
+    while (y < HEIGHT)
+    {
+        x = 0;
+        while (x < WIDTH)
+        {
+            mandelbrot_pixel(f, x, y);
+			x++;
+        }
+        y++;
+    }
+    mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
+}
+
+int	get_fractal_color(int iter, int max_iter, int color_shift)
+{
+	int	red;
+	int	green;
+	int	blue;
+
+	if (iter >= max_iter)
+		return (0x000000);
+	red = (iter * (9 + color_shift)) % 256;
+	green = (iter * (5 + color_shift)) % 256;
+	blue = (iter * (11 + color_shift)) % 256;
+	return ((red << 16) | (green << 8) | blue);
+}
+
+
+/*
 void	ft_render(t_data *img)
 {
 	int			i;
@@ -48,16 +90,7 @@ void	ft_render(t_data *img)
 		y++;
 	}
 }
-
-double map_x(int y, t_data *data)
-{
-	return((x - WIDTH / 2) * (4.0 / WIDTH) / data->zoom + data->x_offset);
-}
-
-double map_y(int x,t_data *data)
-{
-	return((y - HEIGHT / 2) * (4.0 / HEIGHT) / data->zoom + data->y_offset);
-}
+*/
 
 
 /*
@@ -76,13 +109,13 @@ void ft_render(t_data *f)
     t_complex   c;
     int         iter;
 
-    /* recreate image buffer */
+    //recreate image buffer
     if (f->img)
         mlx_destroy_image(f->mlx, f->img);
     f->img = mlx_new_image(f->mlx, WIDTH, HEIGHT);
     f->addr = mlx_get_data_addr(f->img, &f->bpp,
                                 &f->line_len, &f->endian);
-    /* draw each pixel 
+    draw each pixel 
     y = 0;
     while (y < HEIGHT)
     {
