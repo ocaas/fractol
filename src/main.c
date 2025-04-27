@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:59 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/27 01:02:42 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/27 02:55:48 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	main(void)
 	fractol.addr = mlx_get_data_addr(fractol.img, &fractol.bpp,
 			&fractol.line_len, &fractol.endian);
 	fractol.zoom = 1.0;
-	fractol.offset_x = 0.0;
+	fractol.offset_x = -0.5;
 	fractol.offset_y = 0.0;
+	fractol.max_iter = 100;
+	fractol.fractal_type = MANDELBROT;
 	ft_render(&fractol);
 	mlx_put_image_to_window(fractol.mlx, fractol.win, fractol.img, 0, 0);
 	mlx_key_hook(fractol.win, key_handle, &fractol);

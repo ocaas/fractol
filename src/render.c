@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/27 00:50:31 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/27 03:35:03 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,6 @@ void	loop_pixels(t_data *img, int x, int y, int color)
 	*(unsigned int *)dest = color;
 }
 
-void	ft_render(t_data *data)
-{
-	if (data->img)
-		mlx_destroy_image(data->mlx, data->img);
-	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->img_data = mlx_get_data_addr(data->img, &data->bpp,
-			&data->line_len, &data->endian);
-	if (data->fractal_type == MANDELBROT)
-		mandelbrot(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-}
-/*
 void	ft_render(t_data *img)
 {
 	int			i;
@@ -60,9 +48,57 @@ void	ft_render(t_data *img)
 		y++;
 	}
 }
-*/
+
+double map_x(int y, t_data *data)
+{
+	return((x - WIDTH / 2) * (4.0 / WIDTH) / data->zoom + data->x_offset);
+}
+
+double map_y(int x,t_data *data)
+{
+	return((y - HEIGHT / 2) * (4.0 / HEIGHT) / data->zoom + data->y_offset);
+}
+
+
 /*
 ex. render has to covert each (x, y) pixel into complex numbers.
 Apply the math loop (z = z^2 + c)
 color the pixel depending how fast z escapes. 
+*/
+
+
+/*
+
+void ft_render(t_data *f)
+{
+    int         x;
+    int         y;
+    t_complex   c;
+    int         iter;
+
+    /* recreate image buffer */
+    if (f->img)
+        mlx_destroy_image(f->mlx, f->img);
+    f->img = mlx_new_image(f->mlx, WIDTH, HEIGHT);
+    f->addr = mlx_get_data_addr(f->img, &f->bpp,
+                                &f->line_len, &f->endian);
+    /* draw each pixel 
+    y = 0;
+    while (y < HEIGHT)
+    {
+        x = 0;
+        while (x < WIDTH)
+        {
+			c.re = ((double)x - WIDTH / 2.0) * (4.0 / WIDTH) / f->zoom + f->offset_x;
+			c.im = ((double)y - HEIGHT / 2.0) * (4.0 / HEIGHT) / f->zoom + f->offset_y;
+
+            iter = mandelbrot(c);
+            loop_pixels(f, x, y, (iter == f->max_iter) ? 0x000000
+                                                      : iter * 1000);
+            x++;
+        }
+        y++;
+    }
+    mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
+}
 */
