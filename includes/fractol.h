@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/27 06:01:23 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/28 01:37:18 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct t_data
 	int		endian;
 
 	int 	fractal_type;
-
+	int		color_shift;
 	double	offset_x;
 	double	offset_y;
 	double	zoom;
@@ -56,10 +56,10 @@ typedef struct t_complex
 
 void	ft_render(t_data *img);
 void	loop_pixels(t_data *img, int x, int y, int color);
-int		mandelbrot(t_complex z, int max_iter);
 int		key_handle(int keycode, t_data *data);
 int		error_check(t_data *data);
 void 	zoom_handle(int keycode, t_data *data);
+int		mandelbrot(t_complex c, int max_iter);
 void	mandelbrot_pixel(t_data *data, int x, int y);
 double	map_x(int x, t_data *data);
 double	map_y(int y, t_data *data);

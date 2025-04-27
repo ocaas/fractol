@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/27 05:59:33 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/28 01:42:08 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void ft_render(t_data *f)
 {
     int	x;
 	int	y;
-	int iter;
-    t_complex c;
 
     y = 0;
     if (f->img)
