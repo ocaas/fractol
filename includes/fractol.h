@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/28 05:14:56 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/29 23:04:17 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <unistd.h>
 # include <math.h>
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 700
+# define HEIGHT 700
 # define ESC_KEY 65307
 # define UP_ARROW 65362
 # define DOWN_ARROW 65364
@@ -74,5 +74,6 @@ void	mandelbrot_pixel(t_data *data, int x, int y);
 double	map_x(int x, t_data *data);
 double	map_y(int y, t_data *data);
 void	draw_mandelbrot(t_data *data);
+void	handles(t_data *data);
 
 #endif

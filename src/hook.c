@@ -6,14 +6,14 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 07:47:44 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/29 20:58:12 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:57:09 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
 
-static void close_cleanly(t_data	*data)
+static void close_cleanly(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_window(data->mlx, data->win);
@@ -22,22 +22,16 @@ static void close_cleanly(t_data	*data)
 	exit(0);
 }
 
-static void zoom_in(t_data *f)
+int mouse_handle(int button, int x, int y, t_data *f)
 {
-    f->offset_x = (f->offset_x - (WIDTH / 2.0) * (4.0 / WIDTH) / f->zoom) *
-		 1.2 + (WIDTH / 2.0) * (4.0 / WIDTH) / (f->zoom * 1.2);
-    f->offset_y = (f->offset_y - (HEIGHT / 2.0) * (4.0 / HEIGHT) / f->zoom) * 
-		1.2 + (HEIGHT / 2.0) * (4.0 / HEIGHT) / (f->zoom * 1.2);
-    f->zoom *= 1.2;
-}
-
-static void zoom_out(t_data *f)
-{
-    f->offset_x = (f->offset_x - (WIDTH / 2.0) * (4.0 / WIDTH) / f->zoom) / 
-		1.2 + (WIDTH / 2.0) * (4.0 / WIDTH) / (f->zoom / 1.2);
-    f->offset_y = (f->offset_y - (HEIGHT / 2.0) * (4.0 / HEIGHT) / f->zoom) / 
-		1.2 + (HEIGHT / 2.0) * (4.0 / HEIGHT) / (f->zoom / 1.2);
-    f->zoom /= 1.2;
+	(void)x;
+	(void)y;
+	if (button == MOUSE_SCROLL_UP)
+		f->zoom *= 0.95;
+	if(button == MOUSE_SCROLL_DOWN)
+		f->zoom *= 1.05;
+    ft_render(f);
+    return (0);
 }
 
 int key_handle(int keycode, t_data *f)
@@ -51,31 +45,15 @@ int key_handle(int keycode, t_data *f)
     if (keycode == A_KEY || keycode == LEFT_ARROW)
         f->offset_x -= 0.2 / f->zoom;
     if (keycode == D_KEY || keycode == RIGHT_ARROW)
-        f->offset_x += 0.2 / f->zoom;
-    if (keycode == ZOOM_IN)
-        zoom_in(f);
-    if (keycode == ZOOM_OUT)
-        zoom_out(f);
+        f->offset_x += 0.2 / f->zoom; 
     ft_render(f);
     return (0);
 }
 
-int mouse_handle(int button, int x, int y, t_data *f)
+void handles(t_data	*data)
 {
-    if (button == MOUSE_SCROLL_UP)
-    {
-        f->zoom *= 1.2;
-        f->offset_x += (x - WIDTH / 2.0) / WIDTH / f->zoom;
-        f->offset_y += (y - HEIGHT / 2.0) / HEIGHT / f->zoom;
-    }
-    if (button == MOUSE_SCROLL_DOWN)
-    {
-        f->zoom /= 1.2;
-        f->offset_x -= (x - WIDTH / 2.0) / WIDTH / f->zoom;
-        f->offset_y -= (y - HEIGHT / 2.0) / HEIGHT / f->zoom;
-    }
-    ft_render(f);
-    return (0);
+	mlx_hook(data->win, 2, 1L << 0, key_handle, data);
+	mlx_hook(data->win, 4, 1L << 2, mouse_handle, data);
 }
 
 /*
@@ -115,4 +93,24 @@ void zoom_handle(int keycode, t_data *data)
 	apply_color_change(keycode, data);
 	handle_lorenz_keys(keycode, data);
 	render_fractal(data);
-	return (0);*/
+	return (0);
+*/
+
+/*
+static void zoom_in(t_data *f)
+{
+    f->offset_x = (f->offset_x - (WIDTH / 2.0) * (4.0 / WIDTH) / f->zoom) *
+		 1.2 + (WIDTH / 2.0) * (4.0 / WIDTH) / (f->zoom * 1.2);
+    f->offset_y = (f->offset_y - (HEIGHT / 2.0) * (4.0 / HEIGHT) / f->zoom) * 
+		1.2 + (HEIGHT / 2.0) * (4.0 / HEIGHT) / (f->zoom * 1.2);
+    f->zoom *= 1.2;
+}
+
+static void zoom_out(t_data *f)
+{
+    f->offset_x = (f->offset_x - (WIDTH / 2.0) * (4.0 / WIDTH) / f->zoom) / 
+		1.2 + (WIDTH / 2.0) * (4.0 / WIDTH) / (f->zoom / 1.2);
+    f->offset_y = (f->offset_y - (HEIGHT / 2.0) * (4.0 / HEIGHT) / f->zoom) / 
+		1.2 + (HEIGHT / 2.0) * (4.0 / HEIGHT) / (f->zoom / 1.2);
+    f->zoom /= 1.2;
+} */
