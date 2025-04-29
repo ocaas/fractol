@@ -6,31 +6,76 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 07:47:44 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/27 05:39:14 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:58:12 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
 
-int	key_handle(int keycode, t_data *data)
+static void close_cleanly(t_data	*data)
 {
-	if (keycode == ESC_KEY)
-	{
-		mlx_destroy_image(data->mlx, data->img);
-		mlx_destroy_window(data->mlx, data->win);
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
-		exit(0);	
-	}
-	else if(keycode == ZOOM_IN)
-		data->zoom *= 1.2;
-	else if (keycode == ZOOM_OUT)
-		data->zoom /= 1.2;
-	else
-		return(0);
-	ft_render(data);
-	return (0);
+	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
+}
+
+static void zoom_in(t_data *f)
+{
+    f->offset_x = (f->offset_x - (WIDTH / 2.0) * (4.0 / WIDTH) / f->zoom) *
+		 1.2 + (WIDTH / 2.0) * (4.0 / WIDTH) / (f->zoom * 1.2);
+    f->offset_y = (f->offset_y - (HEIGHT / 2.0) * (4.0 / HEIGHT) / f->zoom) * 
+		1.2 + (HEIGHT / 2.0) * (4.0 / HEIGHT) / (f->zoom * 1.2);
+    f->zoom *= 1.2;
+}
+
+static void zoom_out(t_data *f)
+{
+    f->offset_x = (f->offset_x - (WIDTH / 2.0) * (4.0 / WIDTH) / f->zoom) / 
+		1.2 + (WIDTH / 2.0) * (4.0 / WIDTH) / (f->zoom / 1.2);
+    f->offset_y = (f->offset_y - (HEIGHT / 2.0) * (4.0 / HEIGHT) / f->zoom) / 
+		1.2 + (HEIGHT / 2.0) * (4.0 / HEIGHT) / (f->zoom / 1.2);
+    f->zoom /= 1.2;
+}
+
+int key_handle(int keycode, t_data *f)
+{
+    if (keycode == ESC_KEY)
+        close_cleanly(f);
+    if (keycode == W_KEY || keycode == UP_ARROW)
+        f->offset_y -= 0.2 / f->zoom;
+    if (keycode == S_KEY || keycode == DOWN_ARROW)
+        f->offset_y += 0.2 / f->zoom;
+    if (keycode == A_KEY || keycode == LEFT_ARROW)
+        f->offset_x -= 0.2 / f->zoom;
+    if (keycode == D_KEY || keycode == RIGHT_ARROW)
+        f->offset_x += 0.2 / f->zoom;
+    if (keycode == ZOOM_IN)
+        zoom_in(f);
+    if (keycode == ZOOM_OUT)
+        zoom_out(f);
+    ft_render(f);
+    return (0);
+}
+
+int mouse_handle(int button, int x, int y, t_data *f)
+{
+    if (button == MOUSE_SCROLL_UP)
+    {
+        f->zoom *= 1.2;
+        f->offset_x += (x - WIDTH / 2.0) / WIDTH / f->zoom;
+        f->offset_y += (y - HEIGHT / 2.0) / HEIGHT / f->zoom;
+    }
+    if (button == MOUSE_SCROLL_DOWN)
+    {
+        f->zoom /= 1.2;
+        f->offset_x -= (x - WIDTH / 2.0) / WIDTH / f->zoom;
+        f->offset_y -= (y - HEIGHT / 2.0) / HEIGHT / f->zoom;
+    }
+    ft_render(f);
+    return (0);
 }
 
 /*

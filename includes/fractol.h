@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/28 01:37:18 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/04/28 05:14:56 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@
 # define WIDTH 1000
 # define HEIGHT 1000
 # define ESC_KEY 65307
+# define UP_ARROW 65362
+# define DOWN_ARROW 65364
+# define RIGHT_ARROW 65363
+# define LEFT_ARROW 65361
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
+# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_DOWN 5
 # define MLX_ERROR 1
 # define ZOOM_IN 61
 # define ZOOM_OUT 45
