@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:04 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/28 01:43:51 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/05/02 05:08:47 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,19 @@ static int	mlx_error(t_data *data)
 
 static int	img_error(t_data *data)
 {
-	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	if (!data->img)
-	{
-		mlx_destroy_window(data->mlx, data->win);
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
+	void	*img_ptr;
+
+	img_ptr = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	if (!img_ptr)
 		return (MLX_ERROR);
-	}
-	data->img = mlx_get_data_addr(data->img, &data->bpp,
+	data->addr = mlx_get_data_addr(img_ptr, &data->bpp,
 			&data->line_len, &data->endian);
-	if (!data->img)
+	if (!data->addr)
 	{
-		mlx_destroy_image(data->mlx, data->img);
-		mlx_destroy_window(data->mlx, data->win);
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
+		mlx_destroy_image(data->mlx, img_ptr);
 		return (MLX_ERROR);
 	}
+	data->img = img_ptr;          /* keep the real MLX image pointer */
 	return (0);
 }
 

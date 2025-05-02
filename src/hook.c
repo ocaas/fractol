@@ -6,12 +6,11 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 07:47:44 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/29 22:57:09 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/05/01 05:30:18 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
 
 static void close_cleanly(t_data *data)
 {
@@ -26,9 +25,9 @@ int mouse_handle(int button, int x, int y, t_data *f)
 {
 	(void)x;
 	(void)y;
-	if (button == MOUSE_SCROLL_UP)
+	if (button == MOUSE_SCROLL_UP || button == PLUS_KEY)
 		f->zoom *= 0.95;
-	if(button == MOUSE_SCROLL_DOWN)
+	if(button == MOUSE_SCROLL_DOWN || button == MINUS_KEY)
 		f->zoom *= 1.05;
     ft_render(f);
     return (0);

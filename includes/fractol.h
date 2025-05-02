@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/29 23:04:17 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:49:26 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define MOUSE_SCROLL_UP 4
 # define MOUSE_SCROLL_DOWN 5
 # define MLX_ERROR 1
-# define ZOOM_IN 61
-# define ZOOM_OUT 45
+# define PLUS_KEY 61
+# define MINUS_KEY 45
 # define MANDELBROT 0 
 # define JULIA 1
 
@@ -64,16 +64,23 @@ typedef struct t_complex
 	double		im; //imaginary 
 }	t_complex;
 
-void	ft_render(t_data *img);
-void	loop_pixels(t_data *img, int x, int y, int color);
-int		key_handle(int keycode, t_data *data);
-int		error_check(t_data *data);
-void 	zoom_handle(int keycode, t_data *data);
-int		mandelbrot(t_complex c, int max_iter);
-void	mandelbrot_pixel(t_data *data, int x, int y);
-double	map_x(int x, t_data *data);
-double	map_y(int y, t_data *data);
-void	draw_mandelbrot(t_data *data);
-void	handles(t_data *data);
+void			ft_render(t_data *img);
+void			loop_pixels(t_data *img, int x, int y, int color);
+int				key_handle(int keycode, t_data *data);
+int				error_check(t_data *data);
+void 			zoom_handle(int keycode, t_data *data);
+int				mandelbrot(t_complex c, int max_iter);
+void			mandelbrot_pixel(t_data *data, int x, int y);
+double			map_x(int x, t_data *data);
+double			map_y(int y, t_data *data);
+void			draw_mandelbrot(t_data *data);
+void			handles(t_data *data);
+int				julia(t_complex z, t_complex c, int max_iter);
+void			draw_julia_pixel(t_data *data, int x, int y);
+unsigned int	get_color(int iter, int max_iter);
+int				ft_strcmp(const char *s1, const char *s2);
+float			ft_atof(char *s);
+int				ft_parse(char *s);
+void			ft_putstr(char const *s);
 
 #endif

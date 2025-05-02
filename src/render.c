@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:53:03 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/04/28 01:42:08 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/05/02 22:48:31 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,47 @@ void ft_render(t_data *f)
     f->img = mlx_new_image(f->mlx, WIDTH, HEIGHT);
     f->addr = mlx_get_data_addr(f->img, &f->bpp, &f->line_len, &f->endian);
 
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			if (f->fractal_type == MANDELBROT)
+				mandelbrot_pixel(f, x, y);
+			else
+				draw_julia_pixel(f, x, y);
+			x++;
+		}
+		y++;
+	}
+    mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
+}
+
+/*
+void render_julia(t_data *f)
+{
+    int         x, y, iter;
+    t_complex   z;
+    t_complex   c;
+
+    c.re = -0.7;
+    c.im = 0.27015;
+    y = 0;
     while (y < HEIGHT)
     {
         x = 0;
         while (x < WIDTH)
         {
-            mandelbrot_pixel(f, x, y);
-			x++;
+            z.re = (double)x / WIDTH * 4.0 / f->zoom - 2.0 + f->offset_x;
+            z.im = (double)y / HEIGHT * 4.0 / f->zoom - 2.0 + f->offset_y;
+            iter = julia(z, c, f->max_iter);
+            loop_pixels(f, x, y, get_color(iter, f->max_iter));
+            x++;
         }
         y++;
     }
-    mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
 }
-
+*/
 int	get_fractal_color(int iter, int max_iter, int color_shift)
 {
 	int	red;
