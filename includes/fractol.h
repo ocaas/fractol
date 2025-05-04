@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:40 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/05/02 22:49:26 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/05/04 03:02:34 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <unistd.h>
 # include <math.h>
 
-# define WIDTH 700
-# define HEIGHT 700
+# define WIDTH 1000
+# define HEIGHT 1000
 # define ESC_KEY 65307
 # define UP_ARROW 65362
 # define DOWN_ARROW 65364
@@ -32,11 +32,10 @@
 # define MOUSE_SCROLL_UP 4
 # define MOUSE_SCROLL_DOWN 5
 # define MLX_ERROR 1
-# define PLUS_KEY 61
+# define PLUS_KEY 43
 # define MINUS_KEY 45
 # define MANDELBROT 0 
 # define JULIA 1
-
 
 typedef struct t_data
 {
@@ -47,28 +46,27 @@ typedef struct t_data
 	int		bpp;
 	int		line_len;
 	int		endian;
-
-	int 	fractal_type;
+	int		fractal_type;
 	int		color_shift;
 	double	offset_x;
 	double	offset_y;
+	double	julia_x;
+	double	julia_y;
 	double	zoom;
 	int		max_iter;
-	//int		c_imag; //sumar +1
-	//int		c_real; //sumar +1
 }	t_data;
 
 typedef struct t_complex
 {
-	double		re; //real
-	double		im; //imaginary 
+	double		re;
+	double		im;
 }	t_complex;
 
 void			ft_render(t_data *img);
 void			loop_pixels(t_data *img, int x, int y, int color);
 int				key_handle(int keycode, t_data *data);
 int				error_check(t_data *data);
-void 			zoom_handle(int keycode, t_data *data);
+void			zoom_handle(int keycode, t_data *data);
 int				mandelbrot(t_complex c, int max_iter);
 void			mandelbrot_pixel(t_data *data, int x, int y);
 double			map_x(int x, t_data *data);

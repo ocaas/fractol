@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:37:04 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/05/02 05:08:47 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/05/03 03:09:59 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	img_error(t_data *data)
 		mlx_destroy_image(data->mlx, img_ptr);
 		return (MLX_ERROR);
 	}
-	data->img = img_ptr;          /* keep the real MLX image pointer */
+	data->img = img_ptr;
 	return (0);
 }
 
@@ -50,12 +50,12 @@ int	error_check(t_data *data)
 	return (0);
 }
 
-double map_x(int x, t_data *data)
+double	map_x(int x, t_data *data)
 {
-	return((x - WIDTH / 2.0) * (4.0 / WIDTH) / data->zoom + data->offset_x);
+	return ((x - WIDTH / 2.0) * (4.0 / WIDTH) / data->zoom + data->offset_x);
 }
 
-double map_y(int y, t_data *data)
+double	map_y(int y, t_data *data)
 {
-	return((y - HEIGHT / 2.0) * (4.0 / HEIGHT) / data->zoom + data->offset_y);
+	return ((y - HEIGHT / 2.0) * (4.0 / HEIGHT) / data->zoom + data->offset_y);
 }

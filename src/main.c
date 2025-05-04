@@ -6,7 +6,7 @@
 /*   By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 01:36:59 by olopez-s          #+#    #+#             */
-/*   Updated: 2025/05/02 05:01:50 by olopez-s         ###   ########.fr       */
+/*   Updated: 2025/05/03 03:14:58 by olopez-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,19 @@ int	main(int ac, char **av)
 	else if (!ft_strcmp(av[1], "julia"))
 		fractol.fractal_type = JULIA;
 	else
-	{
-		write(2, "Invalid fractal type.\n", 22);
-		return (1);
-	}
+		return (write(2, "Invalid fractal type.\n", 22), 1);
 	if (error_check(&fractol))
 		return (1);
-	fractol.zoom      = 1.0;
-	fractol.offset_x  = -0.5;
-	fractol.offset_y  =  0.0;
-	fractol.max_iter  = 100;
+	fractol.zoom = 1.0;
+	fractol.offset_x = 0.0;
+	fractol.offset_y = 0.0;
+	fractol.max_iter = 100;
 	fractol.color_shift = 0;
 	ft_render(&fractol);
 	handles(&fractol);
 	mlx_loop(fractol.mlx);
 	return (0);
 }
-
-
-
 
 /*
 int	main(void)
@@ -71,9 +65,6 @@ int	main(void)
 	mlx_loop(fractol.mlx);
 	return (0);
 }
-
-
-
 
 int	main(int ac, char **av)
 {
