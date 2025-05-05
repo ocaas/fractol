@@ -6,7 +6,7 @@
 #    By: olopez-s <olopez-s@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 01:37:44 by olopez-s          #+#    #+#              #
-#    Updated: 2025/05/05 05:12:09 by olopez-s         ###   ########.fr        #
+#    Updated: 2025/05/05 05:57:14 by olopez-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,15 @@ CC = cc
 NAME = fractol
 
 SRC_DIR = src
-SRC = $(wildcard $(SRC_DIR)/*.c)
+SRC = \
+	src/main.c	\
+	src/utils.c	\
+	src/utils2.c	\
+	src/mandelbrot.c	\
+	src/julia.c	\
+	src/render.c	\
+	src/hook.c	\
+	src/input.c
 
 CFLAGS = -Wall -Wextra -Werror -Iinclude -I./minilibx-linux
 
